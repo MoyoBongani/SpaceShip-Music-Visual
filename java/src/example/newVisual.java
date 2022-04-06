@@ -6,7 +6,7 @@ public class newVisual extends Visual
 {
     AudioBandsVisual abv;
     boolean titleScreen = true;
-    
+    boolean pauseplay = false;
     ///////////////////////////////
 
 
@@ -35,17 +35,32 @@ public class newVisual extends Visual
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
-        
+
+        if (key == 'p')
+        {
+            if (pauseplay == false)
+            { 
+                getAudioPlayer().pause();
+                pauseplay = true;
+            }
+            else
+            {
+                getAudioPlayer().play();
+                pauseplay = false;
+            }
+        }
     }
 
     public void draw()
     {
-        background(0);
-
-        ///////////////////////////////
-        ///////////////
+        background(255);
 
         if (key == ' ')
+        {
+            textSize(0);
+            titleScreen = false;
+        }
+        if (key == 'p')
         {
             textSize(0);
             titleScreen = false;
@@ -54,9 +69,12 @@ public class newVisual extends Visual
         {
             if(titleScreen == true)
             {
-                textSize(100);
-                //text("Press Space to begin", 20, 120, 540, 300);
-                text("Press Space to begin", 450, 500);
+                background(255);
+                textSize(displayWidth/20);
+                fill(0,0,0);
+                text("Press Space to begin", displayWidth/4+5, displayHeight/2+5);
+                fill(255, 0, 0);
+                text("Press Space to begin", displayWidth/4, displayHeight/2);
             }
         }
 
