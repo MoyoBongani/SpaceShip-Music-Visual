@@ -5,14 +5,15 @@ import ie.tudublin.*;
 public class newVisual extends Visual 
 {
     AudioBandsVisual abv;
-
+    boolean titleScreen = true;
+    
     ///////////////////////////////
 
 
     public void settings()
     {
-        size(1024, 500);
-        //fullScreen(P3D, SPAN);
+        //size(1024, 500);
+        fullScreen(P3D, SPAN);
 
     }
 
@@ -33,7 +34,6 @@ public class newVisual extends Visual
         {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
-            textMode(0);
         }
         
     }
@@ -43,11 +43,24 @@ public class newVisual extends Visual
         background(0);
 
         ///////////////////////////////
+        ///////////////
 
-       // Draw the letter to the center of the screen
-        textSize(36);
-        text("Press Space to begin", 50, 120, 540, 300);
+        if (key == ' ')
+        {
+            textSize(0);
+            titleScreen = false;
+        }
+        else
+        {
+            if(titleScreen == true)
+            {
+                textSize(100);
+                //text("Press Space to begin", 20, 120, 540, 300);
+                text("Press Space to begin", 450, 500);
+            }
+        }
 
+        ///////////////
         ///////////////////////////////
         try
         {
