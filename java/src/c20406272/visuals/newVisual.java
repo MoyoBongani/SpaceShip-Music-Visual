@@ -1,4 +1,4 @@
-package example;
+package c20406272.visuals;
 
 import ie.tudublin.*;
 
@@ -6,7 +6,7 @@ public class newVisual extends Visual
 {
     AudioBandsVisual abv;
     boolean titleScreen = true;
-    boolean pauseplay = false;
+    
     ///////////////////////////////
 
 
@@ -35,38 +35,17 @@ public class newVisual extends Visual
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
-
-        if (key == 'p')
-        {
-            if (pauseplay == false)
-            { 
-                getAudioPlayer().pause();
-                pauseplay = true;
-            }
-            else
-            {
-                getAudioPlayer().play();
-                pauseplay = false;
-            }
-        }
+        
     }
 
     public void draw()
     {
         background(255);
-<<<<<<< HEAD
-=======
 
         ///////////////////////////////
         ///////////////
->>>>>>> 3e987da02da50bf475fd3929657ea52384748dd3
 
         if (key == ' ')
-        {
-            textSize(0);
-            titleScreen = false;
-        }
-        if (key == 'p')
         {
             textSize(0);
             titleScreen = false;
@@ -75,14 +54,6 @@ public class newVisual extends Visual
         {
             if(titleScreen == true)
             {
-<<<<<<< HEAD
-                background(255);
-                textSize(displayWidth/20);
-                fill(0,0,0);
-                text("Press Space to begin", displayWidth/4+5, displayHeight/2+5);
-                fill(255, 0, 0);
-                text("Press Space to begin", displayWidth/4, displayHeight/2);
-=======
                 //          TITLE
                 textSize(displayWidth/20);
 
@@ -106,7 +77,6 @@ public class newVisual extends Visual
 
 
                 
->>>>>>> 3e987da02da50bf475fd3929657ea52384748dd3
             }
         }
 
@@ -121,6 +91,7 @@ public class newVisual extends Visual
         {
             e.printStackTrace();
         }
+        
         // Call this is you want to use frequency bands
         calculateFrequencyBands(); 
 
