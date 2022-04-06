@@ -1,13 +1,9 @@
 package ie.tudublin;
 
-//testing branch 
-
-import example.CubeVisual;
-import example.MyVisual;
-import c20309081.testVisual;
-import example.RotatingAudioBands;
-import ie.tudublin.Visual;
-
+//import example.CubeVisual;
+import example.newVisual;
+//import example.MyVisual;
+//import example.RotatingAudioBands;
 
 public class Main
 {	
@@ -15,19 +11,13 @@ public class Main
 	public void startUI()
 	{
 		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new MyVisual());		
+        processing.core.PApplet.runSketch( a, new newVisual());		
 	}
-
-	public void test1()
-	{
-		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new RotatingAudioBands());		
-	}
-
+	
 	public void test2()
 	{
 		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new testVisual());		
+        processing.core.PApplet.runSketch( a, new newVisual());		
 	}
 
 	public static void main(String[] args)

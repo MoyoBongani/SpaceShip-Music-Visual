@@ -23,14 +23,18 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
+<<<<<<< HEAD
         loadAudio("mula.mp3");   
+=======
+        loadAudio("chemical.mp3");   
+>>>>>>> f5e006e595b4d6d074dccef5158038adf0c5c013
 
         
         // Call this instead to read audio from the microphone
         //startListening(); 
         
         wf = new WaveForm(this);
-        abv = new AudioBandsVisual(this);
+        //abv = new AudioBandsVisual(this);
     }
 
     public void keyPressed()
