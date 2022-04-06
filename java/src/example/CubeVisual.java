@@ -36,11 +36,7 @@ public class CubeVisual extends Visual
         setFrameSize(256);
 
         startMinim();
-<<<<<<< HEAD
-        loadAudio("chemicalbond.mp3");
-=======
         loadAudio("mula.mp3");
->>>>>>> f5e006e595b4d6d074dccef5158038adf0c5c013
         //getAp().play();
         //startListening(); 
         

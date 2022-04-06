@@ -1,4 +1,4 @@
-package example;
+package c20406272.visuals;
 
 import ie.tudublin.*;
 
@@ -91,6 +91,7 @@ public class newVisual extends Visual
         {
             e.printStackTrace();
         }
+        
         // Call this is you want to use frequency bands
         calculateFrequencyBands(); 
 
