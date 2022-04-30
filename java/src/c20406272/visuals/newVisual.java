@@ -1,5 +1,7 @@
 package c20406272.visuals;
 
+import com.jogamp.newt.Screen;
+
 import ie.tudublin.*;
 
 public class newVisual extends Visual 
@@ -12,8 +14,8 @@ public class newVisual extends Visual
 
     public void settings()
     {
-        //size(1024, 500);
-        fullScreen(P3D, SPAN);
+        size(1000, 1000);
+        //fullScreen(P3D, SPAN);
 
     }
 
@@ -55,24 +57,25 @@ public class newVisual extends Visual
             if(titleScreen == true)
             {
                 //          TITLE
-                textSize(displayWidth/20);
+                textSize(width/15);
+                textAlign(CENTER, CENTER);
 
                 //Shadow
                 fill(0,0,0,70);
-                text("Press Space to begin", displayWidth/4+5, displayHeight/3+5);
+                text("Press Space to begin", width/2+width/205, height/5+height/205);
                 //Text
                 fill(0);
-                text("Press Space to begin", displayWidth/4, displayHeight/3);
+                text("Press Space to begin" , width/2, height/5);
 
                 //          CONTROLS
-                textSize(displayWidth/30);
+                textSize(width/20);
 
                 //Shadow
                 fill(0,0,0,70);
-                text("-Press P to pause/play", displayWidth/6+5, displayHeight/2+5);
+                text("-Press P to pause/play", width/2+width/205, height/2+height/205);
                 //Text
                 fill(0);
-                text("-Press P to pause/play", displayWidth/6, displayHeight/2);
+                text("-Press P to pause/play", width/2, height/2);
                 
 
 
