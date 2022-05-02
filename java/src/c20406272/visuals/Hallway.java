@@ -1,6 +1,7 @@
 package c20406272.visuals;
 
 import processing.core.*;
+import java.lang.Math;
 
 public class Hallway {
     newVisual nv;
@@ -15,6 +16,7 @@ public class Hallway {
     public void render()
     {
         add = add + nv.getSmoothedBands()[0] * 0.2f;
+        float hallSize = nv.height/2.0f + nv.height/5.0f;
 
         //rectangle fog
         nv.fill(nv.lightToDark);
@@ -28,37 +30,37 @@ public class Hallway {
         nv.noFill();
         nv.stroke(nv.map(255,0,nv.getSmoothedBands()[0]*3,0,255),0,nv.map(255,0,nv.getSmoothedBands()[0]*7,255,0));
 
-        for(int i = -1500; i <= 10; i++)
+        for(int i = -1500; i <= 15; i++)
         {
 
             nv.pushMatrix();
-            nv.translate(nv.width/2, nv.height/2, i * 1000 + add);
-            nv.box(1000);
+            nv.translate(nv.width/2, nv.height/2, i * hallSize + add);
+            nv.box(hallSize);
             nv.popMatrix();
 
         }
 
-        //ship
+        //rocket
         nv.fill(255,127,0);
         nv.stroke(255);
         nv.pushMatrix();
         nv.translate(nv.mouseX, nv.mouseY, -100);
-        nv.box(50, 50, 100);
+        nv.box(Math.round(hallSize/20), Math.round(hallSize/20), Math.round(hallSize/10));
         nv.popMatrix();
 
         nv.pushMatrix();
         nv.translate(nv.mouseX, nv.mouseY, -175);
-        nv.box(35, 35, 35);
+        nv.box(Math.round(hallSize/28));
         nv.popMatrix();
 
         nv.pushMatrix();
         nv.translate(nv.mouseX, nv.mouseY, -200);
-        nv.box(30, 30, 30);
+        nv.box(Math.round(hallSize/34));
         nv.popMatrix();
 
         nv.pushMatrix();
         nv.translate(nv.mouseX, nv.mouseY, -175);
-        nv.box(25, 25, 25);
+        nv.box(Math.round(hallSize/40));
         nv.popMatrix();
     }
 }
