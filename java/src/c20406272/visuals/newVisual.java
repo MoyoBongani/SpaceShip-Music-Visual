@@ -1,6 +1,6 @@
 package c20406272.visuals;
 
-import com.jogamp.newt.Screen;
+//import com.jogamp.newt.Screen;
 
 import ie.tudublin.*;
 
@@ -8,13 +8,13 @@ public class newVisual extends Visual
 {
     AudioBandsVisual abv;
     boolean titleScreen = true;
-    
+    boolean pauseplay = false;
     ///////////////////////////////
 
 
     public void settings()
     {
-        size(1000, 1000);
+        size(800, 800);
         //fullScreen(P3D, SPAN);
 
     }
@@ -36,18 +36,77 @@ public class newVisual extends Visual
         {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
+            pauseplay = false;
         }
         
+        if (key == 'p')
+        {
+            if (pauseplay == false)
+            { 
+                getAudioPlayer().pause();
+                pauseplay = true;
+            }
+            else
+            {
+                getAudioPlayer().play();
+                pauseplay = false;
+            }
+        }
     }
 
-    public void draw()
+    public void startMenu()
+    {
+        //          TITLE
+        textSize(width/15);
+        textAlign(CENTER, CENTER);
+
+        //Shadow
+        fill(0,0,0,70);
+        text("Press Space to begin song", width/2+width/205, height/5+height/205);
+        //Text
+        fill(0);
+        text("Press Space to begin song" , width/2, height/5);
+
+        //          CONTROLS
+        textSize(width/20);
+
+        //Shadow
+        fill(0,0,0,70);
+        text("-Press P to pause/play", width/2+width/205, height/2+height/205);
+        //Text
+        fill(0);
+        text("-Press P to pause/play", width/2, height/2);
+    }
+
+    public void pauseMenu()
+    {
+        //          TITLE
+        textSize(width/15);
+        textAlign(CENTER, CENTER);
+
+        //Shadow
+        fill(0,0,0,70);
+        text("Press Space to restart song", width/2+width/205, height/5+height/205);
+        //Text
+        fill(0);
+        text("Press Space to restart song" , width/2, height/5);
+
+        //          CONTROLS
+        textSize(width/20);
+
+        //Shadow
+        fill(0,0,0,70);
+        text("-Press P to continue", width/2+width/205, height/2+height/205);
+        //Text
+        fill(0);
+        text("-Press P to continue", width/2, height/2);
+    }
+
+    public void getMenu()
     {
         background(255);
 
-        ///////////////////////////////
-        ///////////////
-
-        if (key == ' ')
+        if(key == ' ')
         {
             textSize(0);
             titleScreen = false;
@@ -56,32 +115,19 @@ public class newVisual extends Visual
         {
             if(titleScreen == true)
             {
-                //          TITLE
-                textSize(width/15);
-                textAlign(CENTER, CENTER);
-
-                //Shadow
-                fill(0,0,0,70);
-                text("Press Space to begin", width/2+width/205, height/5+height/205);
-                //Text
-                fill(0);
-                text("Press Space to begin" , width/2, height/5);
-
-                //          CONTROLS
-                textSize(width/20);
-
-                //Shadow
-                fill(0,0,0,70);
-                text("-Press P to pause/play", width/2+width/205, height/2+height/205);
-                //Text
-                fill(0);
-                text("-Press P to pause/play", width/2, height/2);
-                
-
-
-                
+                startMenu();
             }
         }
+
+        if(pauseplay == true)
+        {
+            pauseMenu();
+        }
+    }
+
+    public void draw()
+    {
+        getMenu();
 
         ///////////////
         ///////////////////////////////
