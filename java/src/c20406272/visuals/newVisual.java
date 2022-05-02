@@ -16,6 +16,10 @@ public class newVisual extends Visual
     {
         size(800, 800);
         //fullScreen(P3D, SPAN);
+        smooth();
+        //size(800, 800);
+        
+        //fullScreen(P3D, SPAN);
 
     }
 
