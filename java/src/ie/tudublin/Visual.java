@@ -31,6 +31,7 @@ public abstract class Visual extends PApplet
 
 		bands = new float[(int) log2(frameSize)];
   		smoothedBands = new float[bands.length];
+		
 
 	}
 
@@ -60,7 +61,7 @@ public abstract class Visual extends PApplet
 			total += abs(ab.get(i));
 		}
 		amplitude = total / ab.size();
-		smothedAmplitude = PApplet.lerp(smothedAmplitude, amplitude, 0.1f);
+		smothedAmplitude = PApplet.lerp(smothedAmplitude, amplitude, 0.15f);
 	}
 
 
@@ -75,7 +76,7 @@ public abstract class Visual extends PApplet
 			}
 			average /= (float) w;
 			bands[i] = average * 5.0f;
-			smoothedBands[i] = lerp(smoothedBands[i], bands[i], 0.05f);
+			smoothedBands[i] = lerp(smoothedBands[i], bands[i], 0.1f);
 		}
 	}
 
