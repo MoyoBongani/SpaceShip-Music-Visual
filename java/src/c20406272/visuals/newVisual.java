@@ -5,14 +5,12 @@ import ie.tudublin.*;
 public class newVisual extends Visual 
 {
     AudioBandsVisual abv;
-
     Hallway hw;
 
     boolean titleScreen = true;
 
     float z;
     float lightToDark = 255;
-    boolean lightToDark_once = false;
 
 
     public void settings()
@@ -32,6 +30,8 @@ public class newVisual extends Visual
         
         abv = new AudioBandsVisual(this);
         hw = new Hallway(this);
+
+        
 
         //textFont(createFont("SourceCodePro-Regular.ttf", 36));
     }
@@ -75,11 +75,8 @@ public class newVisual extends Visual
             calculateFrequencyBands(); 
             //abv.render();
 
-
             z = z + 1f;
 
-            
-            
             hw.render();
             
         }
