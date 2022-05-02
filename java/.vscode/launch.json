@@ -4,7 +4,7 @@
             "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
-            "mainClass": "c20406272.visuals.newVisual",
+            "mainClass": "c20406272.Main",
             "projectName": "java"
         }
     ]
