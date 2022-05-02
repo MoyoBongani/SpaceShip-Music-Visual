@@ -60,6 +60,11 @@ public class newVisual extends Visual
                 pauseplay = false;
             }
         }
+
+        if (key == 'p' && titleScreen == true)
+        {
+            pauseplay = false;
+        }
     }
 
     public void startMenu()
@@ -114,20 +119,20 @@ public class newVisual extends Visual
     {
         background(255);
 
-        if(key == ' ')
+        if (key == ' ')
         {
             textSize(0);
             titleScreen = false;
         }
         else
         {
-            if(titleScreen == true)
+            if (titleScreen == true)
             {
                 startMenu();
             }
         }
 
-        if(pauseplay == true)
+        if (pauseplay == true)
         {
             pauseMenu();
         }
