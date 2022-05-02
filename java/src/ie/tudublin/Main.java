@@ -13,10 +13,16 @@ public class Main
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new newVisual());		
 	}
+	
+	public void test2()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new newVisual());		
+	}
 
 	public static void main(String[] args)
 	{
 		Main main = new Main();
-		main.startUI();			
+		main.test2();			
 	}
 }

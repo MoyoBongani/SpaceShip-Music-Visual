@@ -26,7 +26,7 @@ public class RotatingAudioBands extends Visual {
 
     public void setup()
     {
-        colorMode(HSB);
+        colorMode(RGB);
         noCursor();
         
         setFrameSize(256);
@@ -40,7 +40,7 @@ public class RotatingAudioBands extends Visual {
 
     float radius = 200;
 
-    float smoothedBoxSize = 0;
+    float smoothedBoxSize = 5;
 
     float rot = 0;
 
@@ -56,8 +56,9 @@ public class RotatingAudioBands extends Visual {
             e.printStackTrace();
         }
         calculateFrequencyBands();
-        background(0);
-        noFill();
+        background(255);
+        //noFill();
+        fill(255, 0, 0);
         stroke(255);
         lights();
         stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);

@@ -28,4 +28,4 @@ public class WaveForm
             mv.line(i, cy, i, cy + cy * mv.getAudioBuffer().get(i));
         }
     }
-}
+} 

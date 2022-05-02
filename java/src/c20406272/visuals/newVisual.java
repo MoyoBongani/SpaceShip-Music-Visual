@@ -3,6 +3,10 @@ package c20406272.visuals;
 //import com.jogamp.newt.Screen;
 
 import ie.tudublin.*;
+//import processing.core.PApplet;
+
+//import java.text.FieldPosition;
+
 
 public class newVisual extends Visual 
 {
@@ -140,6 +144,7 @@ public class newVisual extends Visual
             // Call this if you want to use FFT data
             calculateFFT(); 
         }
+
         catch(VisualException e)
         {
             e.printStackTrace();
@@ -147,6 +152,7 @@ public class newVisual extends Visual
         
         // Call this is you want to use frequency bands
         calculateFrequencyBands(); 
+        //calculateAverageAmplitude();
 
         abv.render();
     }
