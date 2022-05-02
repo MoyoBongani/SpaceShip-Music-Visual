@@ -44,23 +44,23 @@ public class Hallway {
         nv.fill(255,127,0);
         nv.stroke(255);
         nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -100);
-        nv.box(Math.round(hallSize/20), Math.round(hallSize/20), Math.round(hallSize/10));
+        nv.translate(nv.mouseX, nv.mouseY, -hallSize/10);
+        nv.box(Math.round(hallSize/20), Math.round(hallSize/20), hallSize/10);
         nv.popMatrix();
 
         nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -175);
+        nv.translate(nv.mouseX, nv.mouseY, -hallSize/6);
         nv.box(Math.round(hallSize/28));
         nv.popMatrix();
 
         nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -200);
+        nv.translate(nv.mouseX, nv.mouseY, Math.round(-hallSize/5));
         nv.box(Math.round(hallSize/34));
         nv.popMatrix();
 
         nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -175);
-        nv.box(Math.round(hallSize/40));
+        nv.translate(nv.mouseX, nv.mouseY, -hallSize/6);
+        nv.box(Math.round(hallSize/50));
         nv.popMatrix();
     }
 }
