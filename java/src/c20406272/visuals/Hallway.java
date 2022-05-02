@@ -18,9 +18,8 @@ public class Hallway {
     {
         add = add + nv.getSmoothedBands()[0] * 0.2f;
         float hallSize = nv.height/2.0f + nv.height/5.0f;
-        ballZ = -hallSize/4.3f - 10f;
-        boolean locked = false;
-        
+        //ballZ = -hallSize/4.3f - 10f;
+        //boolean locked = false;
 
         //rectangle fog
         nv.fill(nv.lightToDark);
