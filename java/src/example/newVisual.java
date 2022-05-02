@@ -7,14 +7,11 @@ public class newVisual extends Visual
     AudioBandsVisual abv;
     boolean titleScreen = true;
     boolean pauseplay = false;
-    ///////////////////////////////
-
 
     public void settings()
     {
         //size(1024, 500);
         fullScreen(P3D, SPAN);
-
     }
 
     public void setup()
@@ -35,7 +32,6 @@ public class newVisual extends Visual
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
-
         if (key == 'p')
         {
             if (pauseplay == false)
@@ -49,24 +45,20 @@ public class newVisual extends Visual
                 pauseplay = false;
             }
         }
+        
     }
+
+    float radius = 200;
+
+    float smoothedBoxSize = 5;
+
+    float rot = 0;
 
     public void draw()
     {
         background(255);
-<<<<<<< HEAD
-=======
 
-        ///////////////////////////////
-        ///////////////
->>>>>>> 3e987da02da50bf475fd3929657ea52384748dd3
-
-        if (key == ' ')
-        {
-            textSize(0);
-            titleScreen = false;
-        }
-        if (key == 'p')
+        if (key == ' ' || key == 'p')
         {
             textSize(0);
             titleScreen = false;
@@ -75,14 +67,6 @@ public class newVisual extends Visual
         {
             if(titleScreen == true)
             {
-<<<<<<< HEAD
-                background(255);
-                textSize(displayWidth/20);
-                fill(0,0,0);
-                text("Press Space to begin", displayWidth/4+5, displayHeight/2+5);
-                fill(255, 0, 0);
-                text("Press Space to begin", displayWidth/4, displayHeight/2);
-=======
                 //          TITLE
                 textSize(displayWidth/20);
 
@@ -102,16 +86,9 @@ public class newVisual extends Visual
                 //Text
                 fill(0);
                 text("-Press P to pause/play", displayWidth/6, displayHeight/2);
-                
-
-
-                
->>>>>>> 3e987da02da50bf475fd3929657ea52384748dd3
             }
         }
 
-        ///////////////
-        ///////////////////////////////
         try
         {
             // Call this if you want to use FFT data
@@ -121,9 +98,36 @@ public class newVisual extends Visual
         {
             e.printStackTrace();
         }
-        // Call this is you want to use frequency bands
-        calculateFrequencyBands(); 
+        calculateFrequencyBands();
+        background(255);
+        //noFill();
+        fill(255, 0, 0);
+        stroke(255);
+        lights();
+        stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        camera(0, -500, 500, 0, 0, 0, 0, 1, 0);
+        //translate(0, 0, -250);
 
-        abv.render();
+        rot += getAmplitude() / 8.0f;
+
+        rotateY(rot);
+        float[] bands = getSmoothedBands();
+        for(int i = 0 ; i < bands.length ; i ++)
+        {
+            float theta = map(i, 0, bands.length, 0, TWO_PI);
+
+            stroke(map(i, 0, bands.length, 0, 255), 255, 255);
+            float x = sin(theta) * radius;
+            float z = cos(theta) * radius;
+            float h = bands[i];
+            pushMatrix();
+            translate(x, - h / 2 , z);
+            rotateY(theta);
+            box(50, h, 50);
+            popMatrix();
+        }
+
     }
+    float angle = 0;
+
 }

@@ -4,7 +4,6 @@ import c20406272.visuals.newVisual;
 
 public class Main
 {	
-
 	public void startUI()
 	{
 		String[] a = {"MAIN"};
