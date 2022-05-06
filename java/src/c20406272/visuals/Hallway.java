@@ -1,131 +1,255 @@
 package c20406272.visuals;
 
-//import processing.core.*;
-import java.lang.Math;
+import processing.core.PApplet;
 
 public class Hallway {
-    newVisual nv;
+    Mula mula;
 
-    float add;
-    float ballZ;
+    float add; 
+    float bulletZ;
+    
+    
 
-    public Hallway(newVisual nv)
+    boolean mouseClicked = false;
+    int bulletTime = 0;
+
+    public Hallway(Mula mula)
     {
-        this.nv = nv; 
+        this.mula = mula; 
+    }
+
+    public void drawHallway(float hallSize)
+    {
+        
+        for(int i = -1500; i <= 15; i++)
+        {
+
+            mula.pushMatrix();
+            mula.translate(mula.width/2, mula.height/2, i * hallSize + add);
+            mula.box(hallSize);
+            mula.popMatrix();
+
+        }
+    }
+
+    public void drawBars(float hallSize)
+    {
+        for(int i = -1500; i <= 15; i++)
+        {
+            mula.fill(PApplet.map(255,0,mula.getSmoothedBands()[0]*4,255,0),PApplet.map(255,0,mula.getSmoothedBands()[0]*4,255,0),0);
+            mula.stroke(0);
+
+            if(i % 2 == 0)
+            {
+                mula.pushMatrix();
+                mula.translate(mula.width/2-hallSize/4, mula.height/2+hallSize/12, i * hallSize + add);
+                mula.rotateZ(PApplet.radians(-25));
+                mula.box(hallSize/50,hallSize/2,hallSize/50);
+                mula.popMatrix();
+    
+                mula.pushMatrix();
+                mula.translate(mula.width/2+hallSize/4, mula.height/2+hallSize/12, i * hallSize + add);
+                mula.rotateZ(PApplet.radians(25));
+                mula.box(hallSize/50,hallSize/2,hallSize/50);
+                mula.popMatrix();
+            }
+            else
+            {
+                mula.pushMatrix();
+                mula.translate(mula.width/2-hallSize/4, mula.height/2-hallSize/12, i * hallSize + add);
+                mula.rotateZ(PApplet.radians(25));
+                mula.box(hallSize/50,hallSize/2,hallSize/50);
+                mula.popMatrix();
+    
+                mula.pushMatrix();
+                mula.translate(mula.width/2+hallSize/4, mula.height/2-hallSize/12, i * hallSize + add);
+                mula.rotateZ(PApplet.radians(-25));
+                mula.box(hallSize/50,hallSize/2,hallSize/50);
+                mula.popMatrix();
+            }
+
+        }
+    }
+
+    public void drawCubes(float hallSize)
+    {
+        mula.noFill();
+        mula.stroke(PApplet.map(255,0,mula.getSmoothedBands()[0]*3,0,255),0,PApplet.map(255,0,mula.getSmoothedBands()[0]*7,255,0));
+
+        mula.pushMatrix();
+        mula.translate(mula.width/2, mula.height/2, -5000);
+        mula.rotateX(add*0.001f);
+        mula.rotateY(-add*0.001f);
+        mula.rotateZ(add*0.001f);
+        mula.box(hallSize/6);
+        mula.popMatrix();
+
+        mula.fill(255);
+
+        mula.pushMatrix();
+        mula.translate(mula.width/2, mula.height/2, -5000);
+        mula.rotateX(add*0.001f);
+        mula.rotateY(-add*0.001f);
+        mula.rotateZ(add*0.001f);
+        mula.box(hallSize/15);
+        mula.popMatrix();
+    }
+
+    public void drawBullets(float hallSize)
+    {
+        if(!mula.mousePressed)
+        {
+            //mula.stroke(0,0,0);
+            bulletZ = 0;
+            bulletZ = bulletZ + 1f;
+        }
+
+        if(mula.mousePressed)
+        {
+            mula.pushMatrix();
+            mula.stroke(255);
+            mula.translate(0,0,-bulletZ*400);
+            mula.line(mula.mouseX,mula.mouseY, -hallSize/24,mula.mouseX,mula.mouseY,-hallSize/2);
+            mula.popMatrix();
+        }
+    }
+
+    public void drawRocketShip(float hallSize)
+    {
+        mula.stroke(0);
+
+        //body
+        mula.fill(75);
+        
+        mula.pushMatrix();
+        mula.translate(mula.mouseX, mula.mouseY, -hallSize/10);
+        mula.box(hallSize/20,hallSize/20,hallSize/10);
+        mula.popMatrix();
+
+        //middle 1
+        mula.fill(100);
+
+        mula.pushMatrix();
+        mula.translate(mula.mouseX, mula.mouseY, -hallSize/6);
+        mula.box(hallSize/28);
+        mula.popMatrix();
+
+        //middle 2
+        mula.fill(125);
+
+        mula.pushMatrix();
+        mula.translate(mula.mouseX, mula.mouseY, -hallSize/5);
+        mula.box(hallSize/34);
+        mula.popMatrix();
+
+        //nose
+        mula.fill(200,0,0);
+
+        mula.pushMatrix();
+        mula.translate(mula.mouseX, mula.mouseY, -hallSize/4.3f);
+        mula.box(hallSize/50);
+        mula.popMatrix();
+
+        //right wing
+        mula.fill(255,0,0);
+
+        mula.pushMatrix();
+        mula.translate(mula.mouseX + hallSize/20, mula.mouseY, -hallSize/10);
+        mula.box(hallSize/20,hallSize/60,hallSize/20);
+        mula.popMatrix();
+
+        //left wing
+        mula.fill(200,0,0);
+
+        mula.pushMatrix();
+        mula.translate(mula.mouseX -hallSize/20, mula.mouseY, -hallSize/10);
+        mula.box(hallSize/20,hallSize/60,hallSize/20);
+        mula.popMatrix();
+
+        //tail
+        mula.fill(125);
+        
+        mula.pushMatrix();
+        mula.translate(mula.mouseX, mula.mouseY, -hallSize/25);
+        mula.rotateZ(PApplet.radians(45));
+        mula.box(hallSize/40,hallSize/40, hallSize/70);
+        mula.popMatrix();
+
+        mula.pushMatrix();
+        mula.translate(mula.mouseX, mula.mouseY, -hallSize/25);
+        mula.box(hallSize/40,hallSize/40, hallSize/70);
+        mula.popMatrix();
+
+        
+        /////////////////////////////FIRE////////////////////////
+        if(mula.frameCount % 3 == 0)
+        {
+            mula.fill(255,0,0);
+            mula.noStroke();
+
+            mula.pushMatrix();
+            mula.translate(mula.mouseX, mula.mouseY, 0);
+            mula.box(hallSize/60);
+            mula.popMatrix();
+
+            mula.pushMatrix();
+            mula.translate(mula.mouseX, mula.mouseY, 0);
+            mula.rotateZ(PApplet.radians(45));
+            mula.box(hallSize/60);
+            mula.popMatrix();
+
+            mula.fill(255,127,0);
+
+            mula.pushMatrix();
+            mula.translate(mula.mouseX, mula.mouseY, hallSize/50);
+            mula.box(hallSize/80);
+            mula.popMatrix();
+
+            mula.pushMatrix();
+            mula.translate(mula.mouseX, mula.mouseY, hallSize/50);
+            mula.rotateZ(PApplet.radians(45));
+            mula.box(hallSize/80);
+            mula.popMatrix();
+
+            mula.fill(255,255,0);
+
+            mula.pushMatrix();
+            mula.translate(mula.mouseX, mula.mouseY, hallSize/30);
+            mula.box(hallSize/110);
+            mula.popMatrix();
+
+            mula.pushMatrix();
+            mula.translate(mula.mouseX, mula.mouseY, hallSize/30);
+            mula.rotateZ(PApplet.radians(45));
+            mula.box(hallSize/110);
+            mula.popMatrix();
+        }
     }
 
     public void render()
     {
-        add = add + nv.getSmoothedBands()[0] * 0.2f;
-        float hallSize = nv.height/2.0f + nv.height/5.0f;
-        //ballZ = -hallSize/4.3f - 10f;
-        //boolean locked = false;
+        add = add + mula.getSmoothedBands()[0] * 0.3f;
+        bulletZ = bulletZ + 1f;
+        float hallSize = mula.height/2.0f + mula.height/5.0f;
 
-        //rectangle fog
-        nv.fill(nv.lightToDark);
-        nv.noStroke();
-        //nv.pushMatrix();
-        //nv.translate(nv.width/2, nv.height/2, -100000);
-        //nv.box(1600);
-        //nv.popMatrix();
+        mula.noFill();
+        mula.strokeWeight(2.2f);
+        mula.stroke(PApplet.map(255,0,mula.getSmoothedBands()[0]*3,0,255),0,PApplet.map(255,0,mula.getSmoothedBands()[0]*7,255,0));
 
-        //hallway
-        nv.noFill();
-        nv.stroke(nv.map(255,0,nv.getSmoothedBands()[0]*3,0,255),0,nv.map(255,0,nv.getSmoothedBands()[0]*7,255,0));
+        ////////////////////////HALLWAY///////////////////////////////
+        drawHallway(hallSize);
 
-        for(int i = -1500; i <= 15; i++)
-        {
+        ////////////////////////BARS//////////////////////////////
+        drawBars(hallSize);
 
-            nv.pushMatrix();
-            nv.translate(nv.width/2, nv.height/2, i * hallSize + add);
-            nv.box(hallSize);
-            nv.popMatrix();
+        //////////////////////////CUBES////////////////////////////
+        drawCubes(hallSize);
 
-        }
-
-        //particles
-        
-
-        /*
-        for(int i = -1500; i <= 15; i++)
-        {
-
-            nv.pushMatrix();
-            nv.translate(nv.width/2, nv.height/2, i * hallSize + add);
-            nv.popMatrix();
-        }
-        */
+        /////////////////////////BULLETS///////////////////////////////
+        drawBullets(hallSize);
 
         /////////////////////ROCKET SHIP/////////////////////////////
-
-        nv.stroke(255);
-
-        //body
-        nv.fill(75);
-        
-        nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -hallSize/10);
-        nv.box(Math.round(hallSize/20), Math.round(hallSize/20), hallSize/10);
-        nv.popMatrix();
-
-        //middle 1
-        nv.fill(100);
-
-        nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -hallSize/6);
-        nv.box(Math.round(hallSize/28));
-        nv.popMatrix();
-
-        //middle 2
-        nv.fill(125);
-
-        nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, Math.round(-hallSize/5));
-        nv.box(Math.round(hallSize/34));
-        nv.popMatrix();
-
-        //nose
-        nv.fill(200,0,0);
-
-        nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -hallSize/4.3f);
-        nv.box(Math.round(hallSize/50));
-        nv.popMatrix();
-
-        //right wing
-        nv.fill(255,0,0);
-
-        nv.pushMatrix();
-        nv.translate(nv.mouseX + Math.round(hallSize/20), nv.mouseY, -hallSize/10);
-        nv.box(Math.round(hallSize/20),Math.round(hallSize/60),Math.round(hallSize/20));
-        nv.popMatrix();
-
-        //left wing
-        nv.fill(200,0,0);
-
-        nv.pushMatrix();
-        nv.translate(nv.mouseX - Math.round(hallSize/20), nv.mouseY, -hallSize/10);
-        nv.box(Math.round(hallSize/20),Math.round(hallSize/60),Math.round(hallSize/20));
-        nv.popMatrix();
-
-        //tail
-        nv.fill(125);
-        
-        nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -hallSize/25);
-        nv.rotateZ(nv.radians(45));
-        nv.box(Math.round(hallSize/40), Math.round(hallSize/40), hallSize/70);
-        nv.popMatrix();
-
-        nv.pushMatrix();
-        nv.translate(nv.mouseX, nv.mouseY, -hallSize/25);
-        nv.box(Math.round(hallSize/40), Math.round(hallSize/40), hallSize/70);
-        nv.popMatrix();
-
-        nv.fill(255);
-        nv.noStroke();
-        
-                
+        drawRocketShip(hallSize);
         
     }
 }

@@ -5,21 +5,36 @@ import processing.core.*;
 // This is an example of a visual that uses the audio bands
 public class AudioBandsVisual
 {
-    newVisual mv;
+    Mula mula;
+    float rotZ = 0;
 
-    public AudioBandsVisual(newVisual mv)
+    public AudioBandsVisual(Mula mula)
     {
-        this.mv = mv; 
+        this.mula = mula; 
     }
 
     public void render()
     {
-        float gap = mv.width / (float) mv.getBands().length;
-        mv.noStroke();
-        for(int i = 0 ; i < mv.getBands().length ; i ++)
+        float gap = mula.width / (float) mula.getBands().length;
+
+        mula.stroke(255,0,0);
+
+        rotZ += 0.5f;
+
+        for(int i = 0 ; i < mula.getBands().length ; i ++)
         {
-            mv.fill(PApplet.map(i, 0, mv.getBands().length, 255, 0), 255, 255);
-            mv.rect(i * gap, mv.height, gap,-mv.getSmoothedBands()[i] * 0.2f); 
+            mula.fill(PApplet.map(i, 0, mula.getBands().length, 255, 0), 255, 255);
+            //mula.rect(i * gap, mula.height, gap,-mula.getSmoothedBands()[i] * 0.2f); 
+
+            mula.pushMatrix();
+            mula.rotateY(mula.radians(45));
+            mula.rotateX(mula.radians(45));
+            
+            mula.translate(mula.width/6+i * gap,mula.height/2,0);
+            mula.rotateX(mula.radians(rotZ));
+            mula.rotateY(mula.radians(45));
+            mula.box(gap,mula.getSmoothedBands()[i] * 0.2f,mula.height/10);
+            mula.popMatrix();
         }
     }
 }
