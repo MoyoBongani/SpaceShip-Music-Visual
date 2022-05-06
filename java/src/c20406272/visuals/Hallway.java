@@ -23,12 +23,10 @@ public class Hallway {
         
         for(int i = -1500; i <= 15; i++)
         {
-
             mula.pushMatrix();
             mula.translate(mula.width/2, mula.height/2, i * hallSize + add);
             mula.box(hallSize);
             mula.popMatrix();
-
         }
     }
 

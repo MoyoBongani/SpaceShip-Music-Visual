@@ -5,6 +5,7 @@ import ie.tudublin.*;
 public class Mula extends Visual 
 {
     Hallway hw;
+    City ct;
     AudioBandsVisual abv;
 
     boolean titleScreen = true;
@@ -29,6 +30,7 @@ public class Mula extends Visual
         loadAudio("mula.mp3");  
 
         hw = new Hallway(this);
+        ct = new City(this);
         abv = new AudioBandsVisual(this);
 
         //textFont(createFont("SourceCodePro-Regular.ttf", 36));
@@ -201,7 +203,9 @@ public class Mula extends Visual
             }
             case 3:
             {
-             
+                colorMode(HSB);
+                ct.render();
+
                 break;
             }
         }
@@ -221,5 +225,8 @@ public class Mula extends Visual
             menu();
             
         }
+    }
+
+    public void circleMode(int center) {
     }
 }
