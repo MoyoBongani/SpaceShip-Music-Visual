@@ -1,8 +1,10 @@
 # Music Visualiser Project
-
-Name:
-
-Student Number: 
+Name: Bongani Moyo
+Student Number: C20309081
+Name: Nelson Ude
+Student Number: C20479276
+Name: David Davita
+Student Number: C20406272
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -12,12 +14,40 @@ Student Number:
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
+In this assignment we have 2 visualisations using java processing, We all helped each other for the visuals and different aspects of the coding and also the thought process of each idea and how we layed it out. Our visuals respond to the amplitude of the music and the user is given options on what they want to do presented by a menu at the start of the program run and it changes colours, shapes etc.
 
 # Instructions
+Run main.java file in C20406272
 
 # How it works
+Each visualisation has its own java file and class which is all connected to the main class called mula (our song choice), we used the method calclatingAverageAmplitude from the isual class along with getSmoothedBands for some visuals and went from there.
+
+each visualisation has the method called render which allows it to run
+
+```
+switch(drawMode)
+{
+	case 1:
+	{
+		fill(255);
+		noStroke();
+		textSize(width/90);
+		textAlign(CENTER, CENTER);
+		text("Move mouse to move ship. Hold mouse click to shoot.",width/6,height/22);
+		
+		colorMode(RGB);
+		hw.render();
+
+		break;
+	}
+```
+
+*** Visual One ***
+Hallway Visual is a pathway for the apceship to fly through
+
 
 # What I am most proud of in the assignment
+We are mostly proud of how well our team worked regardless of how different our skills in coding were and also how well the visuals turned out especially the hallway visual,
 
 # Markdown Tutorial
 
